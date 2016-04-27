@@ -1,0 +1,14 @@
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\bin\Debug\Game of life remastered.exe.config
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered.csprojResolveAssemblyReference.cache
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\MainWindow.g.cs
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\App.g.cs
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered_MarkupCompile.cache
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered_MarkupCompile.lref
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\bin\Debug\Game of life remastered.exe
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\bin\Debug\Game of life remastered.pdb
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\MainWindow.baml
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered.g.resources
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game_of_life_remastered.Properties.Resources.resources
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered.csproj.GenerateResource.Cache
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered.exe
+E:\Visual studio\C#\Visual Studio 2015\Projects\Game of life remastered\Game of life remastered\obj\Debug\Game of life remastered.pdb
