@@ -26,12 +26,15 @@ namespace Game_of_life_remastered
 
             InitializeComponent();
 
-            Root fullTree = new Root(8, 8);
+            Root fullTree = new Root(16, 16);
 
-            fullTree.addPixel(1, 1);
             fullTree.addPixel(1, 2);
+            fullTree.addPixel(1, 1);
+            fullTree.addPixel(15, 15);
+            fullTree.addPixel(16, 16);
 
             fullTree.removePixel(1, 2);
+            fullTree.removePixel(15, 15);
 
             if (!fullTree.isPixelAlive(1, 2))
             {

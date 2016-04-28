@@ -74,6 +74,8 @@ namespace Game_of_life_remastered
 
             quadrants workingQuadrant = getQuadrant(localX, localY);
             int workingChild = 0;
+            int localXCopy = localX;
+            int localYCopy = localY;
 
             switch (workingQuadrant)
             {
@@ -105,8 +107,8 @@ namespace Game_of_life_remastered
 
                 thisNodeType = nodeType.stem;
                 //childNodes[workingChild] = new QuadTreeNode(x, y, sectorHeight / 2, sectorWidth / 2, this);
-                this.addPixel(x, y, localX, localY);
-                root.addPixel(storedX, storedY);
+                this.addPixel(storedX, storedY, storedX - x + localXCopy, storedY - y + localYCopy);
+                this.addPixel(x, y, localXCopy, localYCopy);
                 return;
 
             }
@@ -277,7 +279,7 @@ namespace Game_of_life_remastered
 
             int childCount = 0;
 
-            for(int i = 0; i < 3; i ++)
+            for(int i = 0; i < 4; i ++)
             {
 
                 if(childNodes[i] != null)
@@ -292,7 +294,7 @@ namespace Game_of_life_remastered
             if(childCount < 2)
             {
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 4; i++)
                 {
 
                     if (childNodes[i] != null && childNodes[i].thisNodeType == nodeType.leaf)
