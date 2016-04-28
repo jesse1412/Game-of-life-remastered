@@ -11,14 +11,15 @@ namespace Game_of_life_remastered
     {
 
         //For leaves.
-        int storedX;
-        int storedY;
+        public int storedX;
+        public int storedY;
 
         //For Branch.
         int sectorWidth;
         int sectorHeight;
-        QuadTreeNode[] childNodes = new QuadTreeNode[4];
-        QuadTreeNode parent;
+        public QuadTreeNode[] childNodes = new QuadTreeNode[4];
+        public QuadTreeNode parent;
+        public static QuadTreeNode root;
 
         //For both.
         nodeType thisNodeType = nodeType.leaf;
@@ -31,6 +32,13 @@ namespace Game_of_life_remastered
             sectorWidth = width;
             sectorHeight = height;
             parent = constructorParent;
+
+            if(parent == null)
+            {
+
+                root = this;
+
+            }
 
         }
 
@@ -96,8 +104,9 @@ namespace Game_of_life_remastered
             {
 
                 thisNodeType = nodeType.stem;
-                childNodes[workingChild] = new QuadTreeNode(x, y, sectorHeight / 2, sectorWidth / 2, this);
-                this.addPixel(storedX, storedY, localX, localY);
+                //childNodes[workingChild] = new QuadTreeNode(x, y, sectorHeight / 2, sectorWidth / 2, this);
+                this.addPixel(x, y, localX, localY);
+                root.addPixel(storedX, storedY);
                 return;
 
             }
@@ -194,10 +203,118 @@ namespace Game_of_life_remastered
         /// </summary>
         /// <param name="x">X co-ordinate of the pixel.</param>
         /// <param name="y">Y co-ordinate of the pixel.</param>
-        public void removePixel(int x, int y)
+        public void removePixel(int x, int y, int localX = 0, int localY = 0, int thisChild = -1)
         {
 
+            if (storedX == x && storedY == y && thisNodeType == nodeType.leaf)
+            {
 
+                if (parent != null)
+                {
+
+                    parent.childNodes[thisChild] = null;
+                    parent.leafCheck();
+
+                }
+
+                else
+                {
+
+                    storedX = 0;
+                    storedY = 0;
+
+                }
+
+                return;
+
+            }
+
+            if (parent == null)
+            {
+
+                localX = x;
+                localY = y;
+
+            }
+
+            quadrants workingQuadrant = getQuadrant(localX, localY);
+            int workingChild = 0;
+
+            switch (workingQuadrant)
+            {
+
+                case quadrants.topLeft:
+                    workingChild = 0;
+                    break;
+
+                case quadrants.topRight:
+                    workingChild = 1;
+                    localX -= sectorWidth / 2;
+                    break;
+
+                case quadrants.bottomLeft:
+                    workingChild = 2;
+                    localY -= sectorHeight / 2;
+                    break;
+
+                case quadrants.bottomRight:
+                    workingChild = 3;
+                    localY -= sectorHeight / 2;
+                    localX -= sectorWidth / 2;
+                    break;
+
+            }
+
+            childNodes[workingChild].removePixel(x, y, localX, localY, workingChild);
+
+        }
+
+        /// <summary>
+        /// Checks if the current node should be a leaf, if so, it becomes a leaf.
+        /// </summary>
+        public void leafCheck()
+        {
+
+            int childCount = 0;
+
+            for(int i = 0; i < 3; i ++)
+            {
+
+                if(childNodes[i] != null)
+                {
+
+                    childCount++;
+
+                }
+
+            }
+
+            if(childCount < 2)
+            {
+
+                for (int i = 0; i < 3; i++)
+                {
+
+                    if (childNodes[i] != null && childNodes[i].thisNodeType == nodeType.leaf)
+                    {
+
+                        storedX = childNodes[i].storedX;
+                        storedY = childNodes[i].storedY;
+                        childNodes[i] = null;
+                        thisNodeType = nodeType.leaf;
+
+                        if(parent != null)
+                        {
+
+                            parent.leafCheck();
+
+                        }
+
+                    }
+
+                }
+
+            }
 
         }
 

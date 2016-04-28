@@ -26,25 +26,24 @@ namespace Game_of_life_remastered
 
             InitializeComponent();
 
-            Root fullTree = new Root(128, 128);
+            Root fullTree = new Root(8, 8);
 
             fullTree.addPixel(1, 1);
-            fullTree.addPixel(2, 2);
-            fullTree.addPixel(3, 3);
-            fullTree.addPixel(4, 4);
-            fullTree.addPixel(5, 5);
+            fullTree.addPixel(1, 2);
 
-            if (fullTree.isPixelAlive(4, 4))
+            fullTree.removePixel(1, 2);
+
+            if (!fullTree.isPixelAlive(1, 2))
             {
 
-                MessageBox.Show("WOOO");
+                MessageBox.Show("1");
 
             }
 
-            if (!fullTree.isPixelAlive(4, 5))
+            if (fullTree.isPixelAlive(1, 1))
             {
 
-                MessageBox.Show("OH MY DAYS");
+                MessageBox.Show("2");
 
             }
 
